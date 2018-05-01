@@ -1,0 +1,45 @@
+<resources>
+    <string name="app_name">Swayamvar</string>
+    <string name="action_settings">Settings</string>
+
+
+    <string name="hint_email">Email</string>
+    <string name="hint_password">Password</string>
+    <string name="hint_name">Fullname</string>
+    <string name="btn_login">LOGIN</string>
+    <string name="btn_register">REGISTER</string>
+    <string name="btn_link_to_register">Not a member? Sign up now.</string>
+    <string name="btn_link_to_login">Already registred! Login Me.</string>
+    <string name="welcome">Welcome</string>
+    <string name="btn_logout">LOGOUT</string>
+    <string name="name">Fullname</string>
+    <string name="login">http://swayamvar.starlingsoftwares.in/appservices/login.php</string>
+    <string name="title_activity_home">Home</string>
+    <string name="content_description_open_navigation_drawer">open navigation drawer</string>
+    <string name="content_description_close_navigation_drawer">close navigation drawer</string>
+    <string name="get_combined_category">http://swayamvar.starlingsoftwares.in/appservices/categories/get_combined_category.php</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="get_data">http://swayamvar.starlingsoftwares.in/appservices/home_page/get_data.php</string>
+    <string name="get_subcat_subsubcat">http://swayamvar.starlingsoftwares.in/appservices/categories/get_subcat_subsubcat.php</string>
+    <string name="check_subsub_category_status">http://swayamvar.starlingsoftwares.in/appservices/categories/check_subsub_category_status.php</string>
+    <string name="get_subsub_category">http://swayamvar.starlingsoftwares.in/appservices/categories/get_subsub_category.php</string>
+    <string name="get_design">http://swayamvar.starlingsoftwares.in/appservices/designs/get_design.php</string>
+    <string name="get_design_details">http://swayamvar.starlingsoftwares.in/appservices/designs/get_design_details.php</string>
+    <string name="set_cart">http://swayamvar.starlingsoftwares.in/appservices/cart/set_cart.php</string>
+    <string name="get_cart">http://swayamvar.starlingsoftwares.in/appservices/cart/get_cart.php</string>
+    <string name="update_quantity">http://swayamvar.starlingsoftwares.in/appservices/cart/update_quantity.php</string>
+    <string name="delete_cart_item">http://swayamvar.starlingsoftwares.in/appservices/cart/delete_cart_item.php</string>
+    <string name="get_customer">http://swayamvar.starlingsoftwares.in/appservices/customer/get_customer.php</string>
+    <string name="get_state">http://swayamvar.starlingsoftwares.in/appservices/state_list/get_state.php</string>
+    <string name="get_cities_php">http://swayamvar.starlingsoftwares.in/appservices/cities/get_cities.php</string>
+    <string name="check_address_status">http://swayamvar.starlingsoftwares.in/appservices/user_address/check_address_status.php</string>
+    <string name="set_user_address">http://swayamvar.starlingsoftwares.in/appservices/user_address/set_user_address.php</string>
+    <string name="get_user">http://swayamvar.starlingsoftwares.in/appservices/user_address/get_user_address.php</string>
+    <string name="set_order">http://swayamvar.starlingsoftwares.in/appservices/orders/set_order.php</string>
+    <string name="get_orders">http://swayamvar.starlingsoftwares.in/appservices/orders/get_orders.php</string>
+    <string name="Shopping_cart">Shopping cart</string>
+    <string name="set_location">http://swayamvar.starlingsoftwares.in/appservices/user_current_location/set_location.php</string>
+
+</resources>
