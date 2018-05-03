@@ -39,7 +39,9 @@
     <string name="get_user">http://swayamvar.starlingsoftwares.in/appservices/user_address/get_user_address.php</string>
     <string name="set_order">http://swayamvar.starlingsoftwares.in/appservices/orders/set_order.php</string>
     <string name="get_orders">http://swayamvar.starlingsoftwares.in/appservices/orders/get_orders.php</string>
-    <string name="Shopping_cart">Shopping cart</string>
     <string name="set_location">http://swayamvar.starlingsoftwares.in/appservices/user_current_location/set_location.php</string>
+    <string name="get_profile_data">http://swayamvar.starlingsoftwares.in/appservices/profile/get_profile.php</string>
+
+    <string name="Shopping_cart">Shopping cart</string>
 
 </resources>

@@ -24,6 +24,7 @@ import com.starling.softwares.swamvar.Fragments.OrdersById;
 import com.starling.softwares.swamvar.Fragments.PlacedOrderDetails;
 import com.starling.softwares.swamvar.Fragments.ProductDescription;
 import com.starling.softwares.swamvar.Fragments.ProductFragment;
+import com.starling.softwares.swamvar.Fragments.ProfileFragment;
 import com.starling.softwares.swamvar.Fragments.SimplySubCategory;
 import com.starling.softwares.swamvar.Fragments.SubCategoryFrag;
 import com.starling.softwares.swamvar.Fragments.ViewCustomerFragment;
@@ -47,8 +48,6 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-import static android.content.Context.LOCATION_SERVICE;
-
 public class Home extends AppCompatActivity {
     @BindView(R.id.parent)
     RelativeLayout parent;
@@ -71,8 +70,8 @@ public class Home extends AppCompatActivity {
         setContentView(R.layout.activity_home);
         ButterKnife.bind(this);
         mInstance = this;
-       handleNavigationAction();
-       addHomeAsInitialPage();
+        handleNavigationAction();
+        addHomeAsInitialPage();
         getSupportFragmentManager().addOnBackStackChangedListener(new FragmentManager.OnBackStackChangedListener() {
             @Override
             public void onBackStackChanged() {
@@ -136,8 +135,8 @@ public class Home extends AppCompatActivity {
         if (fragment instanceof AddressFragment) {
             setTitLeFrag("Add New Address");
         }
-        if (fragment instanceof CartFragment) {
-            setTitLeFrag("Your Cart");
+        if (fragment instanceof ProfileFragment) {
+            setTitLeFrag("Profile");
         }
         if (fragment instanceof OrdersById) {
             setTitLeFrag("Orders");
@@ -163,6 +162,9 @@ public class Home extends AppCompatActivity {
         if (fragment instanceof ViewCustomerFragment) {
             setTitLeFrag("Select Customer");
         }
+        if (fragment instanceof CartFragment) {
+            setTitLeFrag("your cart");
+        }
     }
 
     private Fragment getFragment() {
@@ -182,7 +184,7 @@ public class Home extends AppCompatActivity {
      */
 
     private void handleNavigationAction() {
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle("Home");
         setSupportActionBar(toolbar);
         actionBar = getSupportActionBar();
@@ -221,7 +223,7 @@ public class Home extends AppCompatActivity {
 
             fragmentTransaction.setReorderingAllowed(false);
             fragmentTransaction.addToBackStack(transactionTag);
-            fragmentTransaction.add(R.id.main_content_frame, newFragment).commitAllowingStateLoss();
+            fragmentTransaction.replace(R.id.main_content_frame, newFragment).commitAllowingStateLoss();
             frgManager.executePendingTransactions();
         }
     }
@@ -310,6 +312,8 @@ public class Home extends AppCompatActivity {
         replaceFragment(ViewaddressFragment.newInstance(string), ViewaddressFragment.class.getSimpleName());
     }
 
+
+
     private void clearBackStack() {
         FragmentManager manager = getSupportFragmentManager();
         if (manager.getBackStackEntryCount() > 0) {
@@ -318,7 +322,17 @@ public class Home extends AppCompatActivity {
         }
 
     }
+    public void takeToProfilePage() {
+       /* Fragment fragment = new ProfileFragment();
+        FragmentManager frgManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = frgManager.beginTransaction();
+        fragmentTransaction.replace(R.id.main_content_frame, fragment).commitAllowingStateLoss();*/
+       // frgManager.executePendingTransactions();
+        clearBackStack();
 
+         replaceFragment(new ProfileFragment(), ProfileFragment.class.getCanonicalName());
+
+    }
     public void taketoOrdersById(String user_id) {
         replaceFragment(OrdersById.newInstance(user_id), OrdersById.class.getSimpleName());
     }

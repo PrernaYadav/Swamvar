@@ -237,7 +237,12 @@ public class LandingFragment extends Fragment {
         public void onBindViewHolder(ProductAdapter.ViewHolder holder, int position) {
             final LandingPageModel.CatDesignsBean.DesignsBean model = list.get(position);
             Helper.logcat(tag, "images link >>>   " + model.getDesign_image());
-            Glide.with(context).load(model.getDesign_image()).into(holder.iconId);
+
+            if ((model.getDesign_image()==null)) {
+                holder.iconId.setImageResource(R.color.colorPrimary);
+            } else {
+                Glide.with(context).load(model.getDesign_image()).into(holder.iconId);
+            }
             holder.name.setText(model.getDesign_name());
             holder.price.setText("\u20B9 " + model.getMrp());
             holder.itemView.setOnClickListener(new View.OnClickListener() {

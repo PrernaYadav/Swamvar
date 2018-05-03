@@ -58,8 +58,7 @@ public class DrawerFragment extends Fragment {
     @BindView(R.id.parent)
     RelativeLayout image;
     @BindView(R.id.drawer_submenu_layout)
-    LinearLayout
-            drawerSubmenuLayout;
+    LinearLayout drawerSubmenuLayout;
     private TextView drawerSubmenuTitle;
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mDrawerToggle;
@@ -73,6 +72,9 @@ public class DrawerFragment extends Fragment {
     @BindView(R.id.name)
     TextView name;
 
+    @BindView(R.id.txt_profile)
+    TextView txtProfile;
+
     public DrawerFragment() {
         // Required empty public constructor
     }
@@ -83,15 +85,15 @@ public class DrawerFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_drawer, container, false);
         ButterKnife.bind(this, view);
 
-        drawerSubmenuLayout = (LinearLayout) view.findViewById(R.id.drawer_submenu_layout);
-        drawerSubmenuTitle = (TextView) view.findViewById(R.id.drawer_submenu_title);
+        drawerSubmenuLayout =  view.findViewById(R.id.drawer_submenu_layout);
+        drawerSubmenuTitle =  view.findViewById(R.id.drawer_submenu_title);
         if (Utils.getActiveUser(getActivity()) != null) {
             if (Utils.getActiveUser(getActivity()).getUser_name() != null) {
                 name.setText(String.format("Hello %s", Utils.getActiveUser(getActivity()).getUser_name()));
             } else name.setVisibility(View.GONE);
         }
 
-        Button backBtn = (Button) view.findViewById(R.id.drawer_submenu_back_btn);
+        Button backBtn =  view.findViewById(R.id.drawer_submenu_back_btn);
         backBtn.setOnClickListener(new View.OnClickListener() {
             private long mLastClickTime = 0;
 
@@ -104,6 +106,20 @@ public class DrawerFragment extends Fragment {
                 animateSubListHide();
             }
         });
+
+        txtProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+               // Home.getInstace().takeToProfilePage();
+             //  Home.getInstace().takeToCart();
+                ((Home)getActivity()).takeToProfilePage();
+                Helper.showToast(getActivity(), "P r o f i l e");
+                closeDrawerMenu();
+            }
+        });
+
+
         prepareDrawerRecycler(view);
         return view;
     }

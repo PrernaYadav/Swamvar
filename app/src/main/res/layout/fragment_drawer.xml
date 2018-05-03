@@ -24,6 +24,19 @@
             android:textColor="@color/colorPrimary"
             android:textStyle="bold" />
 
+        <TextView
+            android:id="@+id/txt_profile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@android:drawable/editbox_background"
+            android:gravity="center"
+            android:text="VIEW PROFILE"
+            android:textAllCaps="true"
+            android:padding="10dp"
+            android:textColor="@color/colorPrimary"
+            android:textStyle="bold" />
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">

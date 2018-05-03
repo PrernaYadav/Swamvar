@@ -20,4 +20,5 @@
     <color name="semi_light_transparent">#5a000000</color>
     <color name="color_texmenutop">#989898</color>
     <color name="background_grey">#eeeeee</color>
+    <color name="blue">#4558CB</color>
 </resources>

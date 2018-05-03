@@ -154,8 +154,8 @@ public class Login extends AccountAuthenticatorActivity {
         pDialog.show();
         HashMap<String, String> params = new HashMap<>();
         params.put("access_token", "cjhiZWFxT0szZ3ZQaUZqTElqMmJxQT09");
-        params.put("email", "user@gmail.com");
-        params.put("password", "1234");
+        params.put("email", "agent@gmail.com");
+        params.put("password", "agent");
         params.put("device_id", "123456");
         ServerConnection.requestServer("http://swayamvar.starlingsoftwares.in/appservices/login.php", params, Constant.login, new serverConnectionListner() {
             @Override
