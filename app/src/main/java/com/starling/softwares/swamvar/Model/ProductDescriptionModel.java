@@ -145,7 +145,8 @@ public class ProductDescriptionModel {
                 return design_image;
             }
 
-            public void setDesign_image(String design_image) {
+            public void setDesign_image(String design_image)
+            {
                 this.design_image = design_image;
             }
         }

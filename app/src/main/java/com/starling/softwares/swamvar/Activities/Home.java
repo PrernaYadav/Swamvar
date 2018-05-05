@@ -17,6 +17,7 @@ import android.widget.RelativeLayout;
 
 import com.android.volley.VolleyError;
 import com.starling.softwares.swamvar.Fragments.AddressFragment;
+import com.starling.softwares.swamvar.Fragments.AppointmentFragment;
 import com.starling.softwares.swamvar.Fragments.CartFragment;
 import com.starling.softwares.swamvar.Fragments.DrawerFragment;
 import com.starling.softwares.swamvar.Fragments.LandingFragment;
@@ -25,6 +26,7 @@ import com.starling.softwares.swamvar.Fragments.PlacedOrderDetails;
 import com.starling.softwares.swamvar.Fragments.ProductDescription;
 import com.starling.softwares.swamvar.Fragments.ProductFragment;
 import com.starling.softwares.swamvar.Fragments.ProfileFragment;
+import com.starling.softwares.swamvar.Fragments.ShowAppointmentFragment;
 import com.starling.softwares.swamvar.Fragments.SimplySubCategory;
 import com.starling.softwares.swamvar.Fragments.SubCategoryFrag;
 import com.starling.softwares.swamvar.Fragments.ViewCustomerFragment;
@@ -137,6 +139,12 @@ public class Home extends AppCompatActivity {
         }
         if (fragment instanceof ProfileFragment) {
             setTitLeFrag("Profile");
+        }
+        if (fragment instanceof AppointmentFragment) {
+            setTitLeFrag("Appointment");
+        }
+        if (fragment instanceof ShowAppointmentFragment) {
+            setTitLeFrag("Appointments Status");
         }
         if (fragment instanceof OrdersById) {
             setTitLeFrag("Orders");
@@ -313,7 +321,6 @@ public class Home extends AppCompatActivity {
     }
 
 
-
     private void clearBackStack() {
         FragmentManager manager = getSupportFragmentManager();
         if (manager.getBackStackEntryCount() > 0) {
@@ -322,17 +329,23 @@ public class Home extends AppCompatActivity {
         }
 
     }
-    public void takeToProfilePage() {
-       /* Fragment fragment = new ProfileFragment();
-        FragmentManager frgManager = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = frgManager.beginTransaction();
-        fragmentTransaction.replace(R.id.main_content_frame, fragment).commitAllowingStateLoss();*/
-       // frgManager.executePendingTransactions();
-        clearBackStack();
 
-         replaceFragment(new ProfileFragment(), ProfileFragment.class.getCanonicalName());
+    public void takeToProfilePage() {
+        clearBackStack();
+        replaceFragment(new ProfileFragment(), ProfileFragment.class.getSimpleName());
 
     }
+
+    public void takeToAppointment() {
+        replaceFragment(new AppointmentFragment(), AppointmentFragment.class.getSimpleName());
+
+    }
+
+    public void takeToShowAppointment() {
+        replaceFragment(new ShowAppointmentFragment(), ShowAppointmentFragment.class.getSimpleName());
+
+    }
+
     public void taketoOrdersById(String user_id) {
         replaceFragment(OrdersById.newInstance(user_id), OrdersById.class.getSimpleName());
     }

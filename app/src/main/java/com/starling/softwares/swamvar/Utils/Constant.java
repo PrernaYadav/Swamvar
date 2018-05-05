@@ -29,4 +29,9 @@ public class Constant {
     public static String get_state = "get_state";
     public static String get_city = "get_city";
     public static String set_location = "set_location";
+    public static final String URL_EDIT_IMAGE="http://swayamvar.starlingsoftwares.in/appservices/profile/update_profile_pic.php";
+    public static final String URL_GET_PROFILE="http://swayamvar.starlingsoftwares.in/appservices/profile/get_profile.php";
+    public static final String URL_UPDATE_PROFILE="http://swayamvar.starlingsoftwares.in/appservices/profile/update_profile_detail.php";
+    public static final String URL_SET_APPOINTMENT="http://swayamvar.starlingsoftwares.in/appservices/appointment/set_appointment";
+    public static final String URL_GET_APPOINTMENT="http://swayamvar.starlingsoftwares.in/appservices/appointment/get_appointment";
 }

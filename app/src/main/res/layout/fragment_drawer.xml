@@ -4,7 +4,7 @@
     android:id="@+id/parent"
     android:layout_width="242dp"
     android:layout_height="match_parent"
-    android:background="@color/white">
+    android:background="@android:color/white">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -31,9 +31,22 @@
             android:layout_gravity="center"
             android:background="@android:drawable/editbox_background"
             android:gravity="center"
+            android:padding="10dp"
             android:text="VIEW PROFILE"
             android:textAllCaps="true"
+            android:textColor="@color/colorPrimary"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txt_appointments"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@android:drawable/editbox_background"
+            android:gravity="center"
             android:padding="10dp"
+            android:text="Appointments"
+            android:textAllCaps="true"
             android:textColor="@color/colorPrimary"
             android:textStyle="bold" />
 
@@ -107,7 +120,7 @@
                     android:gravity="center_horizontal"
                     android:padding="7dp"
                     android:text="Powered BY\n Starling Softwares\nPvt Ltd"
-                    android:textColor="@color/white"
+                    android:textColor="@android:color/white"
                     android:textSize="10sp" />
 
             </RelativeLayout>

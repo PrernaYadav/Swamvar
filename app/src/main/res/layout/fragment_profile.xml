@@ -57,9 +57,11 @@
             </LinearLayout>
 
             <View
-                android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:background="@color/colorPrimary" />
+                android:layout_width="200dp"
+                android:layout_height="20dp"
+                android:layout_gravity="center"
+                android:layout_marginBottom="15dp"
+                android:background="@drawable/design" />
 
             <LinearLayout
                 android:layout_width="match_parent"

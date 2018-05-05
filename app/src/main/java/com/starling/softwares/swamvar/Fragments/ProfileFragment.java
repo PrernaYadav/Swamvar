@@ -20,7 +20,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -34,9 +33,8 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.squareup.picasso.Picasso;
 import com.starling.softwares.swamvar.Activities.Home;
-import com.starling.softwares.swamvar.Config;
 import com.starling.softwares.swamvar.R;
-import com.starling.softwares.swamvar.Utils.Helper;
+import com.starling.softwares.swamvar.Utils.Constant;
 import com.starling.softwares.swamvar.Utils.Utils;
 import com.starling.softwares.swamvar.HttpClient;
 
@@ -54,7 +52,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class ProfileFragment extends Fragment {
 
     private String tag = ProfileFragment.class.getSimpleName();
-    Button   btnSave;
+    Button btnSave;
     TextView btnEditProfile;
     TextView btnEditImage;
     EditText etName, etMobile, etEmail, etAddress;
@@ -189,7 +187,7 @@ public class ProfileFragment extends Fragment {
     }
 
     public void getProfileData() {
-        final StringRequest stringRequest = new StringRequest(Request.Method.POST, Config.URL_GET_PROFILE,
+        final StringRequest stringRequest = new StringRequest(Request.Method.POST, Constant.URL_GET_PROFILE,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -260,7 +258,7 @@ public class ProfileFragment extends Fragment {
     }
 
     public void updateProfile() {
-        final StringRequest stringRequest = new StringRequest(Request.Method.POST, Config.URL_UPDATE_PROFILE,
+        final StringRequest stringRequest = new StringRequest(Request.Method.POST, Constant.URL_UPDATE_PROFILE,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -276,7 +274,7 @@ public class ProfileFragment extends Fragment {
                             etEmail.setCursorVisible(false);
                             etMobile.setCursorVisible(false);
                             etAddress.setCursorVisible(false);
-                            Toast.makeText(getActivity(), "Data saved successfully!", Toast.LENGTH_LONG).show();
+                            Toast.makeText(getActivity(), "Data saved successfully!" + response.toString(), Toast.LENGTH_LONG).show();
 
                         } else {
                             Toast.makeText(getActivity(), "Something went wrong", Toast.LENGTH_LONG).show();
@@ -301,6 +299,7 @@ public class ProfileFragment extends Fragment {
                 params.put("mobile", mobile);
                 params.put("email", email);
                 params.put("address", address);
+                Log.v("save", "" + params);
                 return params;
             }
 
@@ -371,7 +370,7 @@ public class ProfileFragment extends Fragment {
         }
 
         private String callService() {
-            String url = Config.URL_EDIT_IMAGE;
+            String url = Constant.URL_EDIT_IMAGE;
             HttpClient client = new HttpClient(url);
             try {
 

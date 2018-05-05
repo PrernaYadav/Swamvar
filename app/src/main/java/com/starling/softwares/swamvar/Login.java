@@ -22,6 +22,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.android.volley.VolleyError;
+import com.google.firebase.iid.FirebaseInstanceId;
 import com.starling.softwares.swamvar.Activities.Home;
 import com.starling.softwares.swamvar.Interfaces.serverConnectionListner;
 import com.starling.softwares.swamvar.Model.User;
@@ -44,6 +45,7 @@ public class Login extends AccountAuthenticatorActivity {
     private ProgressDialog pDialog;
     private SessionManager session;
     private String mOldAccountType;
+    String password,email,deviceId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,9 +55,13 @@ public class Login extends AccountAuthenticatorActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 //        setSupportActionBar(toolbar);
-        inputEmail = (EditText) findViewById(R.id.email);
-        inputPassword = (EditText) findViewById(R.id.password);
-        btnLogin = (Button) findViewById(R.id.btnLogin);
+        inputEmail =  findViewById(R.id.email);
+        inputPassword =  findViewById(R.id.password);
+        btnLogin =  findViewById(R.id.btnLogin);
+        deviceId = FirebaseInstanceId.getInstance().getToken();
+        Log.v("deviceid",""+ deviceId);
+
+
         session = new SessionManager(getApplicationContext());
         if (getIntent().hasExtra(AccountManager.KEY_ACCOUNT_TYPE)) {
             mOldAccountType = getIntent().getStringExtra(AccountManager.KEY_ACCOUNT_TYPE);
@@ -92,8 +98,8 @@ public class Login extends AccountAuthenticatorActivity {
             public void onClick(View view) {
             //    checkLogin();
                 //  startActivity(new Intent(Login.this, Home.class));
-                String password = inputPassword.getText().toString().trim();
-                String email = inputEmail.getText().toString().trim();
+                 password = inputPassword.getText().toString().trim();
+                 email = inputEmail.getText().toString().trim();
                 if (isLocationPermissionGranted()) {
                     MakeUserLogin(email, password);
                 } else {
@@ -154,14 +160,17 @@ public class Login extends AccountAuthenticatorActivity {
         pDialog.show();
         HashMap<String, String> params = new HashMap<>();
         params.put("access_token", "cjhiZWFxT0szZ3ZQaUZqTElqMmJxQT09");
-        params.put("email", "agent@gmail.com");
-        params.put("password", "agent");
-        params.put("device_id", "123456");
+        params.put("email", email);
+        params.put("password", password);
+        params.put("device_id", deviceId);
+
+
+
         ServerConnection.requestServer("http://swayamvar.starlingsoftwares.in/appservices/login.php", params, Constant.login, new serverConnectionListner() {
             @Override
             public void onSuccess(String response) {
                 Helper.dismissDialog(pDialog);
-                Log.v("harshit", response);
+                Log.v("response", response);
                 Helper.logcat(TAG, "user login response >>>  " + response);
                 User user = Helper.getGsonObject().fromJson(response, User.class);
                 if (user != null) {
@@ -197,6 +206,7 @@ public class Login extends AccountAuthenticatorActivity {
             public void onError(VolleyError error) {
                 Helper.dismissDialog(pDialog);
                 error.printStackTrace();
+                Log.v("error",""+error.toString());
                 Helper.showNoResponse(getApplicationContext());
             }
         });

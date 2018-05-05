@@ -60,7 +60,7 @@ public class DrawerFragment extends Fragment {
     @BindView(R.id.drawer_submenu_layout)
     LinearLayout drawerSubmenuLayout;
     private TextView drawerSubmenuTitle;
-    private DrawerLayout mDrawerLayout;
+    private static DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mDrawerToggle;
     private DrawerActionListener listner;
 
@@ -74,6 +74,8 @@ public class DrawerFragment extends Fragment {
 
     @BindView(R.id.txt_profile)
     TextView txtProfile;
+  @BindView(R.id.txt_appointments)
+    TextView txtAppoitments;
 
     public DrawerFragment() {
         // Required empty public constructor
@@ -114,7 +116,16 @@ public class DrawerFragment extends Fragment {
                // Home.getInstace().takeToProfilePage();
              //  Home.getInstace().takeToCart();
                 ((Home)getActivity()).takeToProfilePage();
-                Helper.showToast(getActivity(), "P r o f i l e");
+                closeDrawerMenu();
+            }
+        });
+        txtAppoitments.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                // Home.getInstace().takeToProfilePage();
+                //  Home.getInstace().takeToCart();
+                ((Home) getActivity()).takeToAppointment();
                 closeDrawerMenu();
             }
         });
@@ -325,7 +336,7 @@ public class DrawerFragment extends Fragment {
     /**
      * When the drawer menu is open, close it.
      */
-    public void closeDrawerMenu() {
+    public static void closeDrawerMenu() {
         if (mDrawerLayout != null) {
             mDrawerLayout.closeDrawer(GravityCompat.START);
         }

@@ -1,15 +1,18 @@
 package com.starling.softwares.swamvar.Fragments;
 
 
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
-import android.content.Intent;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.design.widget.BottomSheetBehavior;
 import android.support.design.widget.BottomSheetDialog;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewPager;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -18,18 +21,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.android.volley.VolleyError;
 import com.bumptech.glide.Glide;
 import com.starling.softwares.swamvar.Activities.Home;
-import com.starling.softwares.swamvar.Adapter.BatchAdapter;
 import com.starling.softwares.swamvar.Adapter.ProductColourAdapter;
 import com.starling.softwares.swamvar.Adapter.ProductImageAdapter;
 import com.starling.softwares.swamvar.Adapter.ProductSizeAdapter;
-import com.starling.softwares.swamvar.Interfaces.OnBatchSelectedListner;
 import com.starling.softwares.swamvar.Interfaces.serverConnectionListner;
-import com.starling.softwares.swamvar.Model.LandingPageModel;
 import com.starling.softwares.swamvar.Model.ProductDescriptionModel;
 import com.starling.softwares.swamvar.R;
 import com.starling.softwares.swamvar.Utils.Constant;
@@ -40,6 +41,7 @@ import com.starling.softwares.swamvar.Utils.Utils;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import butterknife.BindView;
@@ -55,6 +57,7 @@ public class ProductDescription extends Fragment {
     TextView name_product;
     @BindView(R.id.photo_recy)
     RecyclerView photo_recy;
+
     @BindView(R.id.colours_recy)
     RecyclerView colours_recy;
     @BindView(R.id.size_recy)
@@ -65,6 +68,7 @@ public class ProductDescription extends Fragment {
     Button cart;
     @BindView(R.id.available_quantity)
     TextView available_quantity;
+
 
     @BindView(R.id.quantity_note)
     TextView quantity_note;
@@ -80,6 +84,8 @@ public class ProductDescription extends Fragment {
     @BindView(R.id.price_product)
     TextView price_product;
     private String gst;
+    Context context;
+    ArrayList<String> arrayList = new ArrayList<>();
 
     public static ProductDescription newInstance(String name, String id, String price, String gst) {
         ProductDescription productDescription = new ProductDescription();
@@ -107,13 +113,16 @@ public class ProductDescription extends Fragment {
     }
 
 
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_product_description, container, false);
         ButterKnife.bind(this, view);
         setHasOptionsMenu(true);
+//        context=getActivity();
         initView();
+
         return view;
     }
 
@@ -341,14 +350,17 @@ public class ProductDescription extends Fragment {
     }
 
     private void initImageRecycler() {
+
         RecyclerView.LayoutManager manager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
         photo_recy.setItemAnimator(new DefaultItemAnimator());
         photo_recy.setLayoutManager(manager);
         photo_adapter = new ProductImageAdapter(getActivity(), new ProductImageAdapter.OnPicSelectedListner() {
             @Override
             public void onPicSlected(ProductDescriptionModel.DataBean.ImagesBean model, int position) {
+
                 Glide.with(getActivity()).load(model.getDesign_image()).into(header_image);
                 photo_adapter.selectItem(position);
+
             }
         });
         photo_recy.setAdapter(photo_adapter);
